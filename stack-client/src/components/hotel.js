@@ -5,7 +5,8 @@ import ButterToast, { Cinnamon } from "butter-toast";
 import { AssignmentTurnedIn, ExtensionSharp } from "@material-ui/icons";
 import axios from "axios";
 
-//define variables
+//Define variables
+
 const initialState = {
   id: "",
   name: "",
@@ -25,7 +26,7 @@ const initialState = {
   image: "",
 };
 
-class Product extends React.Component {
+class Hotel extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
@@ -69,13 +70,13 @@ class Product extends React.Component {
     this.setState({ confirmButton: "EDIT" });
   }
 
-  //to clear input fields
+  //Clear input fields
   onClear() {
     this.setState(initialState);
     this.componentDidMount();
   }
 
-  //for delete products
+  //For delete hotels
   onDelete(id) {
     if (window.confirm("Are you sure to delete this record?")) {
       api
@@ -85,7 +86,7 @@ class Product extends React.Component {
           ButterToast.raise({
             content: (
               <Cinnamon.Crisp
-                title="Online Store"
+                title="Online Hotel Booking System"
                 content="Delete Successful!"
                 scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                 icon={<AssignmentTurnedIn />}
@@ -97,7 +98,7 @@ class Product extends React.Component {
     }
   }
 
-  //for upload a product image
+  //For upload a hotel image
   onChangeHandler = (event) => {
     this.setState(
       {
@@ -114,7 +115,7 @@ class Product extends React.Component {
     );
   };
 
-  //function for handle submit button in form
+  //Function for handle submit button in form
   handleSubmit = (e) => {
     e.preventDefault();
     const isValid = this.validate();
@@ -138,8 +139,8 @@ class Product extends React.Component {
                   ButterToast.raise({
                     content: (
                       <Cinnamon.Crisp
-                        title="Online Store"
-                        content="Product Edit successfully"
+                        title="Online Hotel Booking System"
+                        content="Hotel Edited successfully"
                         scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                         icon={<AssignmentTurnedIn />}
                       />
@@ -161,8 +162,8 @@ class Product extends React.Component {
                   ButterToast.raise({
                     content: (
                       <Cinnamon.Crisp
-                        title="Online Store"
-                        content="Product Edit successfully"
+                        title="Online Hotel Booking System"
+                        content="Hotel Edit successfully"
                         scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                         icon={<AssignmentTurnedIn />}
                       />
@@ -175,8 +176,8 @@ class Product extends React.Component {
               ButterToast.raise({
                 content: (
                   <Cinnamon.Crisp
-                    title="Online Store"
-                    content="This Product Already Exists!"
+                    title="Online Hotel Booking System"
+                    content="This Hotel Already Exists!"
                     scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                     icon={<ExtensionSharp />}
                   />
@@ -191,8 +192,8 @@ class Product extends React.Component {
                 ButterToast.raise({
                   content: (
                     <Cinnamon.Crisp
-                      title="Online Store"
-                      content="Product Add successfully"
+                      title="Online Hotel Booking System"
+                      content="Hotel Added successfully"
                       scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                       icon={<AssignmentTurnedIn />}
                     />
@@ -216,7 +217,7 @@ class Product extends React.Component {
     let imageError = "";
 
     if (!this.state.name) {
-      nameError = "Product Name Cannot Be Blank";
+      nameError = "Hotel Name Cannot Be Blank";
     }
 
     if (!this.state.image) {
@@ -285,14 +286,14 @@ class Product extends React.Component {
           <br></br>
           <div className="row justify-content-center">
             <div className="col-md-10">
-              <div className="card">
-                <div className="card-header">Product</div>
+              <div className="card border-primary mb-3">
+                <div className="card-header" style={{ color: "blue" }}>Add Hotels</div>
                 <div className="card-body">
                   {/*form for add product details*/}
                   <form autoComplete="off" onSubmit={this.handleSubmit}>
                     <div className="form-group row">
                       <label className="col-md-4 col-form-label text-md-right">
-                        Product Name
+                        Hotel Name
                       </label>
                       <div className="col-md-6">
                         <input
@@ -310,7 +311,7 @@ class Product extends React.Component {
 
                     <div className="form-group row">
                       <label className="col-md-4 col-form-label text-md-right">
-                        Category
+                        Hotel Category
                       </label>
                       <div className="col-md-6">
                         <select
@@ -319,7 +320,7 @@ class Product extends React.Component {
                           onChange={this.handleChange}
                           value={this.state.category}
                         >
-                          <option value="">~select~</option>
+                          <option value=""> Select Category</option>
                           {categories.map((category) => (
                             <option>{category.name}</option>
                           ))}
@@ -332,7 +333,7 @@ class Product extends React.Component {
 
                     <div className="form-group row">
                       <label className="col-md-4 col-form-label text-md-right">
-                        Quantity
+                        No Of Rooms
                       </label>
                       <div className="col-md-6">
                         <input
@@ -350,7 +351,7 @@ class Product extends React.Component {
 
                     <div className="form-group row">
                       <label className="col-md-4 col-form-label text-md-right">
-                        Price
+                        Price (Per Room Rs. )
                       </label>
                       <div className="col-md-6">
                         <input
@@ -367,17 +368,9 @@ class Product extends React.Component {
                     </div>
 
                     <div className="form-group row">
-                      <label className="col-md-4 col-form-label text-md-right">
-                        Discount
-                      </label>
+                      <label className="col-md-4 col-form-label text-md-right">  Discount (Rs.)</label>
                       <div className="col-md-6">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="discount"
-                          value={this.state.discount}
-                          onChange={this.handleChange}
-                        />
+                        <input type="text" className="form-control"  name="discount" value={this.state.discount} onChange={this.handleChange} />
                         <div style={{ color: "red" }}>
                           {this.state.discountError}
                         </div>
@@ -385,16 +378,9 @@ class Product extends React.Component {
                     </div>
 
                     <div className="form-group row">
-                      <label className="col-md-4 col-form-label text-md-right">
-                        Image
-                      </label>
+                      <label className="col-md-4 col-form-label text-md-right">Hotel Image </label>
                       <div className="col-md-6">
-                        <input
-                          type="file"
-                          className="form-control"
-                          name="file"
-                          onChange={this.onChangeHandler}
-                        />
+                        <input  type="file"  className="form-control"  name="file"  onChange={this.onChangeHandler}  />
                         <div style={{ color: "red" }}>
                           {this.state.imageError}
                         </div>
@@ -402,30 +388,24 @@ class Product extends React.Component {
                     </div>
 
                     <div className="col-md-4 offset-md-4">
-                      <input
-                        type="submit"
-                        className="btn btn-primary"
-                        value={this.state.confirmButton}
-                      />
-                      <input
-                        type="button"
-                        className="btn btn-danger"
-                        value="Clear"
-                        onClick={() => this.onClear()}
-                      />
+                      <input type="submit" className="btn btn-primary" value={this.state.confirmButton} />
+                      <input type="button"  className="btn btn-danger"  value="Clear"  onClick={() => this.onClear()} />
                     </div>
+
                   </form>
                   <br></br>
                   <div className="x_scroll">
-                    {/*table for display product details*/}
+
+                    {/* Display Hootel details*/}
+
                     <table className="table">
                       <thead>
                         <tr>
-                          <th className="tableTh">name</th>
-                          <th className="tableTh">Category</th>
-                          <th className="tableTh">Quantity</th>
-                          <th className="tableTh">Price</th>
-                          <th className="tableTh">Discount</th>
+                          <th className="tableTh">Hotel Name</th>
+                          <th className="tableTh">Hotel Category</th>
+                          <th className="tableTh">Room Quantity</th>
+                          <th className="tableTh">Room Price (Rs.)</th>
+                          <th className="tableTh">Discount (Rs.)</th>
                           <th className="tableTh">Image</th>
                           <th className="tableTh">Edit</th>
                           <th className="tableTh">Remove</th>
@@ -439,31 +419,17 @@ class Product extends React.Component {
                             <td className="tableTh">{product.quantity}</td>
                             <td className="tableTh">{product.price}</td>
                             <td className="tableTh">{product.discount}</td>
+
                             <td className="tableTh">
-                              <img
-                                width="100px"
-                                alt=""
-                                src={"/" + product.image}
-                                className="img-thumbnail"
-                              />
+                              <img width="100px" alt="" src={"/" + product.image} className="img-thumbnail"/>
                             </td>
+
                             <td className="tableTh">
-                              <button
-                                type="button"
-                                onClick={() => this.onChange(product._id)}
-                                className="btn btn-success"
-                              >
-                                Edit
-                              </button>
+                              <button type="button" onClick={() => this.onChange(product._id)} className="btn btn-success">Edit</button>
                             </td>
+
                             <td className="tableTh">
-                              <button
-                                type="button"
-                                onClick={() => this.onDelete(product._id)}
-                                className="btn btn-danger"
-                              >
-                                Delete
-                              </button>
+                              <button type="button" onClick={() => this.onDelete(product._id)} className="btn btn-danger" > Delete </button>
                             </td>
                           </tr>
                         ))}
@@ -480,4 +446,4 @@ class Product extends React.Component {
   }
 }
 
-export default Product;
+export default Hotel;

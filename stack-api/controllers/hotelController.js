@@ -4,11 +4,11 @@ var ObjectID= require('mongoose').Types.ObjectId
 var multer = require('multer')
 var uniqid = require('uniqid')
 
-var { NewProduct } = require('../models/newProducts')
+var { NewProduct } = require('../models/newHotel')
 
-/*******APIs for manage products*********/
+//APIs for manage hotels
 
-//API for get product details
+//API for get hotel details
 router.get('/',(req,res)=>{
     NewProduct.find((err,docs)=>{
         if(!err){
@@ -19,7 +19,8 @@ router.get('/',(req,res)=>{
     })
 })
 
-//API for create new product
+//API for create new hotel record 
+
 router.post('/',(req,res)=>{
     var newRecord= new NewProduct({
         name : req.body.name,
@@ -39,7 +40,8 @@ router.post('/',(req,res)=>{
     })
 })
 
-//API for update product details by relevant id
+//API for update hotel details 
+
 router.put('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){
         return res.status(400).send('No record with given id : '+req.params.id)
@@ -63,7 +65,8 @@ router.put('/:id',(req,res)=>{
     })
 })
 
-//API for delete product
+//API for delete hotel
+
 router.delete('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){
         return res.status(400).send('No record with given id : '+req.params.id)
@@ -87,7 +90,8 @@ var storage = multer.diskStorage({
   }
 })
 
-//for upload image
+//For upload handle hotel image
+
 var upload = multer({ storage: storage }).single('file')
 
 router.post('/upload',function(req, res) {

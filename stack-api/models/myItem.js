@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-//modal for ordered item
+//Modal for manage hotels
+
 var myItem = mongoose.model('myItem',{
     type: {type:String},
     email: {type:String},

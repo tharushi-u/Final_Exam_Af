@@ -5,7 +5,8 @@ import api from "../actions/api.js";
 import ButterToast, { Cinnamon } from "butter-toast";
 import { AssignmentTurnedIn, ExtensionSharp } from "@material-ui/icons";
 
-//defines variables
+//Defines variables
+
 const initialState = {
   email: "",
   password: "",
@@ -40,8 +41,8 @@ class Login extends React.Component {
               ButterToast.raise({
                 content: (
                   <Cinnamon.Crisp
-                    title="Online Store"
-                    content="Wellcome Back!"
+                    title="Online Hotel Booking System"
+                    content="Welcome to Online Hotel Booking System"
                     scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                     icon={<AssignmentTurnedIn />}
                   />
@@ -51,7 +52,7 @@ class Login extends React.Component {
               localStorage.setItem("userName", user[0]["fname"]);
               localStorage.setItem("userEmail", user[0]["email"]);
               localStorage.setItem("userType", user[0]["type"]);
-              window.location.href = "/order";
+              window.location.href = "/booking";
             } else {
               ButterToast.raise({
                 content: (
@@ -80,7 +81,8 @@ class Login extends React.Component {
     }
   };
 
-  /*---------------validating the login edtails-------------------------*/
+  //Validate login details 
+
   validate = () => {
     let emailError = "";
     let passwordError = "";
@@ -113,25 +115,14 @@ class Login extends React.Component {
         <br></br>
         <div className="row justify-content-center">
           <div className="col-md-8">
-            <div className="card">
-              <div className="card-header">Login</div>
+            <div className="card border-primary mb-3">
+              <div className="card-header" style={{ color: "Blue" }}>Login</div>
               <div className="card-body">
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
                   <div className="form-group row">
-                    <label
-                      for="email_address"
-                      className="col-md-4 col-form-label text-md-right"
-                    >
-                      Email
-                    </label>
+                    <label for="email_address"className="col-md-4 col-form-label text-md-right"> Email </label>
                     <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                      />
+                      <input type="text" className="form-control" name="email" value={this.state.email} onChange={this.handleChange}/>
                       <div style={{ color: "red" }}>
                         {this.state.emailError}
                       </div>
@@ -139,20 +130,9 @@ class Login extends React.Component {
                   </div>
 
                   <div className="form-group row">
-                    <label
-                      for="password"
-                      className="col-md-4 col-form-label text-md-right"
-                    >
-                      Password
-                    </label>
+                    <label for="password" className="col-md-4 col-form-label text-md-right"> Password </label>
                     <div className="col-md-6">
-                      <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                      />
+                      <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.handleChange}/>
                       <div style={{ color: "red" }}>
                         {this.state.passwordError}
                       </div>
@@ -160,10 +140,9 @@ class Login extends React.Component {
                   </div>
 
                   <div className="col-md-6 offset-md-4">
-                    <button type="submit" className="btn btn-primary">
-                      Login
-                    </button>
+                    <button type="submit" className="btn btn-primary"> Login </button>
                   </div>
+
                 </form>
               </div>
             </div>

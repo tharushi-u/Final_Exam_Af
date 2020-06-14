@@ -46,7 +46,7 @@ class Register extends React.Component {
             ButterToast.raise({
               content: (
                 <Cinnamon.Crisp
-                  title="Online Store"
+                  title="Online Hotel Booking System"
                   content="This Email Already Exists!"
                   scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                   icon={<ExtensionSharp />}
@@ -61,8 +61,8 @@ class Register extends React.Component {
                 ButterToast.raise({
                   content: (
                     <Cinnamon.Crisp
-                      title="Online Store"
-                      content="Register successfully"
+                      title="Online Hotel Booking System"
+                      content="User Registered successfully"
                       scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                       icon={<AssignmentTurnedIn />}
                     />
@@ -76,7 +76,8 @@ class Register extends React.Component {
     }
   };
 
-  /*---------------validating the user details----------------*/
+  /* Validate the user details */
+
   validate = () => {
     let fnameError = "";
     let lnameError = "";
@@ -149,22 +150,15 @@ class Register extends React.Component {
         <br></br>
         <div className="row justify-content-center">
           <div className="col-md-8">
-            <div className="card">
-              <div className="card-header">Register</div>
+            <div className="card border-primary mb-3">
+              <div className="card-header" style={{ color: "Blue" }}>Register Form</div>
               <div className="card-body">
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
+
                   <div className="form-group row">
-                    <label className="col-md-4 col-form-label text-md-right">
-                      First Name
-                    </label>
+                    <label className="col-md-4 col-form-label text-md-right"> First Name </label>
                     <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="fname"
-                        value={this.state.fname}
-                        onChange={this.handleChange}
-                      />
+                      <input type="text" className="form-control" name="fname" value={this.state.fname}  onChange={this.handleChange}  />
                       <div style={{ color: "red" }}>
                         {this.state.fnameError}
                       </div>
@@ -172,17 +166,9 @@ class Register extends React.Component {
                   </div>
 
                   <div className="form-group row">
-                    <label className="col-md-4 col-form-label text-md-right">
-                      Last Name
-                    </label>
+                    <label className="col-md-4 col-form-label text-md-right"> Last Name </label>
                     <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="lname"
-                        value={this.state.lname}
-                        onChange={this.handleChange}
-                      />
+                      <input  type="text"  className="form-control"  name="lname"  value={this.state.lname}   onChange={this.handleChange}   />
                       <div style={{ color: "red" }}>
                         {this.state.lnameError}
                       </div>
@@ -190,17 +176,9 @@ class Register extends React.Component {
                   </div>
 
                   <div className="form-group row">
-                    <label className="col-md-4 col-form-label text-md-right">
-                      Phone Number
-                    </label>
+                    <label className="col-md-4 col-form-label text-md-right"> Phone Number </label>
                     <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="phone"
-                        value={this.state.phone}
-                        onChange={this.handleChange}
-                      />
+                      <input  type="text"  className="form-control"  name="phone"  value={this.state.phone}  onChange={this.handleChange}  />
                       <div style={{ color: "red" }}>
                         {this.state.phoneError}
                       </div>
@@ -208,17 +186,9 @@ class Register extends React.Component {
                   </div>
 
                   <div className="form-group row">
-                    <label className="col-md-4 col-form-label text-md-right">
-                      Email
-                    </label>
+                    <label className="col-md-4 col-form-label text-md-right"> Email </label>
                     <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                      />
+                      <input  type="text"  className="form-control"  name="email"   value={this.state.email}   onChange={this.handleChange} />
                       <div style={{ color: "red" }}>
                         {this.state.emailError}
                       </div>
@@ -226,17 +196,9 @@ class Register extends React.Component {
                   </div>
 
                   <div className="form-group row">
-                    <label className="col-md-4 col-form-label text-md-right">
-                      Password
-                    </label>
+                    <label className="col-md-4 col-form-label text-md-right">  Password  </label>
                     <div className="col-md-6">
-                      <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                      />
+                      <input type="password"  className="form-control"  name="password"  value={this.state.password}  onChange={this.handleChange}  />
                       <div style={{ color: "red" }}>
                         {this.state.passwordError}
                       </div>
@@ -244,17 +206,9 @@ class Register extends React.Component {
                   </div>
 
                   <div className="form-group row">
-                    <label className="col-md-4 col-form-label text-md-right">
-                      Confirm Password
-                    </label>
+                    <label className="col-md-4 col-form-label text-md-right">  Confirm Password  </label>
                     <div className="col-md-6">
-                      <input
-                        type="password"
-                        className="form-control"
-                        name="cpassword"
-                        value={this.state.cpassword}
-                        onChange={this.handleChange}
-                      />
+                      <input type="password"  className="form-control"  name="cpassword"  value={this.state.cpassword} onChange={this.handleChange}  />
                       <div style={{ color: "red" }}>
                         {this.state.cpasswordError}
                       </div>
@@ -262,10 +216,9 @@ class Register extends React.Component {
                   </div>
 
                   <div className="col-md-4 offset-md-4">
-                    <button type="submit" className="btn btn-primary">
-                      Register
-                    </button>
+                    <button type="submit" className="btn btn-primary"> Register </button>
                   </div>
+
                 </form>
               </div>
             </div>

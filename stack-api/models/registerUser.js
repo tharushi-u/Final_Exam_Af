@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-//modal for registered user
+//Modal for register a user
+
 var RegisterUser = mongoose.model('register',{
     fname : {type:String},
     lname : {type:String},

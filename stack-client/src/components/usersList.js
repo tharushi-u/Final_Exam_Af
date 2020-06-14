@@ -25,7 +25,8 @@ class Users extends React.Component {
       );
   }
 
-  /* --------------deleting a record in this list----------------- */
+  //Deleting a user record in this list 
+  
   onDelete(id) {
     if (window.confirm("Are you sure to delete this record?")) {
       api
@@ -35,8 +36,8 @@ class Users extends React.Component {
           ButterToast.raise({
             content: (
               <Cinnamon.Crisp
-                title="Online Store"
-                content="Delete Successful!"
+                title="Online Hotel Booking System"
+                content="User Deleted Successfully!"
                 scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                 icon={<AssignmentTurnedIn />}
               />
@@ -44,111 +45,6 @@ class Users extends React.Component {
           });
           this.componentDidMount();
         });
-    }
-  }
-
-  /*-----------------changing the priviledges-----------------------*/
-  onUserChange(id, type) {
-    if (window.confirm("Are you sure to change the privilege?")) {
-      var data = { type: type };
-      api
-        .registerUser()
-        .update(id, data)
-        .then((res) => {
-          ButterToast.raise({
-            content: (
-              <Cinnamon.Crisp
-                title="Online Store"
-                content="Change Successful!"
-                scheme={Cinnamon.Crisp.SCHEME_PURPLE}
-                icon={<AssignmentTurnedIn />}
-              />
-            ),
-          });
-          this.componentDidMount();
-        });
-    }
-  }
-
-  onSmChange(id, type, email) {
-    if (window.confirm("Are you sure to change the privilege?")) {
-      var data = { type: type };
-      api
-        .registerUser()
-        .update(id, data)
-        .then((res) => {
-          ButterToast.raise({
-            content: (
-              <Cinnamon.Crisp
-                title="Online Store"
-                content="Change Successful!"
-                scheme={Cinnamon.Crisp.SCHEME_PURPLE}
-                icon={<AssignmentTurnedIn />}
-              />
-            ),
-          });
-          this.componentDidMount();
-          var data = { email: email };
-          api.registerUser().email(data);
-        });
-    }
-  }
-
-  editButton(type, id, email) {
-    if (type === "user") {
-      return [
-        <button
-          type="button"
-          onClick={() => this.onUserChange(id, "admin")}
-          className="btn btn-warning"
-        >
-          Admin
-        </button>,
-        <br></br>,
-        <button
-          type="button"
-          onClick={() => this.onSmChange(id, "sm", email)}
-          className="btn btn-success"
-        >
-          S.M
-        </button>,
-      ];
-    } else if (type === "admin") {
-      return [
-        <button
-          type="button"
-          onClick={() => this.onUserChange(id, "user")}
-          className="btn btn-warning"
-        >
-          User
-        </button>,
-        <br></br>,
-        <button
-          type="button"
-          onClick={() => this.onSmChange(id, "sm", email)}
-          className="btn btn-success"
-        >
-          S.M
-        </button>,
-      ];
-    } else if (type === "sm") {
-      return [
-        <button
-          type="button"
-          onClick={() => this.onUserChange(id, "admin")}
-          className="btn btn-warning"
-        >
-          Admin
-        </button>,
-        <br></br>,
-        <button
-          type="button"
-          onClick={() => this.onUserChange(id, "user")}
-          className="btn btn-success"
-        >
-          User
-        </button>,
-      ];
     }
   }
 
@@ -161,8 +57,8 @@ class Users extends React.Component {
           <br></br>
           <div className="row justify-content-center">
             <div className="col-md-12">
-              <div className="card">
-                <div className="card-header">Users</div>
+              <div className="card border-primary mb-3">
+                <div className="card-header" style={{ color: "Blue" }} >Users List</div>
                 <div className="card-body">
                   <table className="table">
                     <thead>
@@ -172,8 +68,7 @@ class Users extends React.Component {
                         <th className="tableTh">Email</th>
                         <th className="tableTh">Phone</th>
                         <th className="tableTh">User Type</th>
-                        <th className="tableTh">Change</th>
-                        <th className="tableTh">Remove User</th>
+                        <th className="tableTh">Delete User</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -185,18 +80,11 @@ class Users extends React.Component {
                           <td className="tableTh">{user.phone}</td>
                           <td className="tableTh">{user.type}</td>
                           <td className="tableTh">
-                            {this.editButton(user.type, user._id, user.email)}
-                          </td>
-                          <td className="tableTh">
                             <button
-                              type="button"
-                              onClick={() => this.onDelete(user._id)}
-                              className="btn btn-danger"
-                            >
-                              Delete
-                            </button>
+                              type="button" onClick={() => this.onDelete(user._id)} className="btn btn-danger" > Delete  </button>
                           </td>
                         </tr>
+
                       ))}
                     </tbody>
                   </table>

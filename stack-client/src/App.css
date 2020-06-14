@@ -1,5 +1,14 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 .App {
   text-align: center;
+  /* The image used */
+  /* background-image: url("img_girl.jpg");
+  background-color: #99bbff;
+  top: 0;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  background-size: contain;*/
 }
 
 .App-logo {

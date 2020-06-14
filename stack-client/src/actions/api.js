@@ -22,27 +22,7 @@ export default {
       delete: (id) => axios.delete(url + id),
     };
   },
-
-  message(url = baseUrl + "message/") {
-    return {
-      fetchAll: () => axios.get(url),
-      fetchById: (id) => axios.get(url + id),
-      create: (newRecord) => axios.post(url, newRecord),
-      update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
-      delete: (id) => axios.delete(url + id),
-    };
-  },
-
-  wishlist(url = baseUrl + "wishlist/") {
-    return {
-      fetchAll: () => axios.get(url),
-      fetchById: (id) => axios.get(url + id),
-      create: (newRecord) => axios.post(url, newRecord),
-      update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
-      delete: (id) => axios.delete(url + id),
-    };
-  },
-
+  
   myItem(url = baseUrl + "myitem/") {
     return {
       fetchAll: () => axios.get(url),

@@ -2,13 +2,14 @@ const express = require('express')
 var router = express.Router()
 var ObjectID= require('mongoose').Types.ObjectId
 
-var { ProductCategory } = require('../models/productCategory')
+var { HotelCategory } = require('../models/hotelCategory')
 
-/************APIs for manage categories*********/
+//APIs for manage hotel categories in the hotel booking system
 
-//API for get all categories
+//Get all hotel categories
+
 router.get('/',(req,res)=>{
-    ProductCategory.find((err,docs)=>{
+    HotelCategory.find((err,docs)=>{
         if(!err){
             res.send(docs)
         }else{
@@ -17,9 +18,10 @@ router.get('/',(req,res)=>{
     })
 })
 
-//API for create a category
+//Create a new hotel category
+
 router.post('/',(req,res)=>{
-    var newRecord= new ProductCategory({
+    var newRecord= new HotelCategory({
         name : req.body.name
     })
 
@@ -32,7 +34,8 @@ router.post('/',(req,res)=>{
     })
 })
 
-//API for update a category
+//Update hotel category
+
 router.put('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){
         return res.status(400).send('No record with given id : '+req.params.id)
@@ -42,7 +45,7 @@ router.put('/:id',(req,res)=>{
         name : req.body.name
     }
 
-    ProductCategory.findByIdAndUpdate(req.params.id, { $set: updateRecords},{new:true}, (err,docs)=>{
+    HotelCategory.findByIdAndUpdate(req.params.id, { $set: updateRecords},{new:true}, (err,docs)=>{
         if(!err){
             res.send(docs)
         }else{
@@ -51,13 +54,14 @@ router.put('/:id',(req,res)=>{
     })
 })
 
-//API for delete a category
+//Delete hotel category
+
 router.delete('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){
         return res.status(400).send('No record with given id : '+req.params.id)
     }
 
-    ProductCategory.findByIdAndRemove(req.params.id,(err,docs)=>{
+    HotelCategory.findByIdAndRemove(req.params.id,(err,docs)=>{
         if(!err){
             res.send(docs)
         }else{

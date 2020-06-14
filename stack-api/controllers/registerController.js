@@ -4,10 +4,12 @@ var ObjectID= require('mongoose').Types.ObjectId
 var nodeBase64 = require('nodejs-base64-converter');
 const nodemailer = require("nodemailer");
 
-/*---------------Api for registering the user -----------------*/
+//Api for managing users
+
 var { RegisterUser } = require('../models/registerUser')
 
-/*----retrieve users -----------------*/
+//Retrieve users
+
 router.get('/',(req,res)=>{
     RegisterUser.find((err,docs)=>{
         if(!err){
@@ -18,7 +20,8 @@ router.get('/',(req,res)=>{
     })
 })
 
-/******Create users*******/
+//Register a new user 
+
 router.post('/',(req,res)=>{
 
     var newRecord= new RegisterUser({
@@ -39,53 +42,7 @@ router.post('/',(req,res)=>{
     })
 })
 
-/*------------------setting the email of the person who is capable of providing this service-----------------*/
-router.post('/email',(req,res)=>{
-
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'apptest1994.05@gmail.com',
-          pass: 'apps1234'
-        }
-      });
-
-    var mailOption ={
-        from: 'apptest1994.05@gmail.com',
-        to: req.body.email,
-        subject: "Online Store change the privilege",
-        text: "change your privilege to store manager"
-      }
-    
-      transporter.sendMail(mailOption,function(error,info){
-        if(error){
-            res.send(error);
-        }else{
-            console.log("Message sent: %s", info.response);
-            res.send(info.response);
-        }
-      });
-    
-})
-
-
-router.put('/:id',(req,res)=>{
-    if(!ObjectID.isValid(req.params.id)){
-        return res.status(400).send('No record with given id : '+req.params.id)
-    }
-
-    var updateRecords={
-        type : req.body.type
-    }
-
-    RegisterUser.findByIdAndUpdate(req.params.id, { $set: updateRecords},{new:true}, (err,docs)=>{
-        if(!err){
-            res.send(docs)
-        }else{
-            console.log('Error while updating records : '+JSON.stringify(err,undefined,2))
-        }
-    })
-})
+//Delete users 
 
 router.delete('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){

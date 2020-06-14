@@ -3,59 +3,49 @@ import "../App.css";
 import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-/*******for navigation bar********/
+//Navigation bar
+
 class nav extends React.Component {
   Logout = () => {
     localStorage.clear();
     window.location.href = "/login";
   };
 
-  /******According to the user type display the their features*********/
+  //Display features accoding to the user types
+
   render() {
-    //admin's system features
+
+    //Admin features
     if (localStorage.getItem("userEmail")) {
       if (localStorage.getItem("userType") === "admin") {
         return (
-          <Navbar bg="light" variant="light">
-            <Navbar.Brand href="/">Online Fashion Store</Navbar.Brand>
-
+          <Navbar bg="navbar navbar-black bg-primary" variant="light" >
+            <Navbar.Brand> <i class="fa fa-building" aria-hidden="true"></i> Online Hotel Booking System - Admin Dashboard </Navbar.Brand>
             <Navbar.Collapse className="collapse navbar-collapse">
               <Nav className="navbar-nav ml-auto">
-                <Nav.Link href="/usersList">Users</Nav.Link>
-                <Nav.Link href="/">View Products</Nav.Link>
-                <Nav.Link href="/category">Category</Nav.Link>
-                <Nav.Link onClick={this.Logout}>Logout</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        );
-      } else if (localStorage.getItem("userType") === "sm") {
-        //Store manager's system features
-        return (
-          <Navbar bg="light" variant="light">
-            <Navbar.Brand href="/">Online Fashion Store</Navbar.Brand>
-
-            <Navbar.Collapse className="collapse navbar-collapse">
-              <Nav className="navbar-nav ml-auto">
-                <Nav.Link href="/product">Product</Nav.Link>
-                <Nav.Link href="/">View Product</Nav.Link>
-                <Nav.Link onClick={this.Logout}>Logout</Nav.Link>
+                
+              <Nav.Link href="/usersList" ><i class="fa fa-users" aria-hidden="true"></i> View Users</Nav.Link>
+                <Nav.Link href="/" ><i class="fa fa-h-square" aria-hidden="true"></i> View Hotels</Nav.Link>
+                <Nav.Link href="/hotel" ><i class="fa fa-plus" aria-hidden="true"></i> Add Hotels</Nav.Link>
+                <Nav.Link href="/category" ><i class="fa fa-list-ul" aria-hidden="true"></i> Add Category</Nav.Link>
+                <Nav.Link onClick={ this.Logout } ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
         );
       } else {
-        //normal user's features
-        return (
-          <Navbar bg="light" variant="light">
-            <Navbar.Brand href="/">Online Fashion Store</Navbar.Brand>
 
+        //User features
+
+        return (
+          <Navbar bg="navbar navbar-black bg-primary" variant="light">
+            <Navbar.Brand > <i class="fa fa-building" aria-hidden="true"></i> Online Hotel Booking System - User Dashboard</Navbar.Brand>
             <Navbar.Collapse className="collapse navbar-collapse">
               <Nav className="navbar-nav ml-auto">
-                <Nav.Link href="/">View Products</Nav.Link>
-                <Nav.Link href="/Wishlist">Wishlist</Nav.Link>
-                <Nav.Link href="/cart">Shopping Cart</Nav.Link>
-                <Nav.Link onClick={this.Logout}>Logout</Nav.Link>
+
+                <Nav.Link href="/" ><i class="fa fa-h-square" aria-hidden="true"></i> View Hotels</Nav.Link>
+                <Nav.Link href="/bookings" ><i class="fa fa-user-circle" aria-hidden="true"></i> My Bookings </Nav.Link>
+                <Nav.Link onClick={ this.Logout } ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -63,13 +53,13 @@ class nav extends React.Component {
       }
     } else {
       return (
-        <Navbar bg="light" variant="light">
-          <Navbar.Brand>Online Fashion Store</Navbar.Brand>
-
+        <Navbar bg="navbar navbar-black bg-primary" variant="light">
+          <Navbar.Brand> <i class="fa fa-building" aria-hidden="true"></i> Online Hotel Booking System - Home </Navbar.Brand>
           <Navbar.Collapse className="collapse navbar-collapse">
             <Nav className="navbar-nav ml-auto">
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/register">Register</Nav.Link>
+
+            <Nav.Link href="/login"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Login</Nav.Link>
+              <Nav.Link href="/register"><i class="fa fa-file-text" aria-hidden="true"></i> Register</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

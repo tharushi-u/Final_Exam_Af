@@ -5,9 +5,7 @@ const path = require("path");
 
 var registerRoutes = require("./controllers/registerController");
 var categoryRoutes = require("./controllers/categoryController");
-var productRoutes = require("./controllers/productController");
-var messageRoutes = require("./controllers/messageController");
-var wishlistRoutes = require("./controllers/wishlistController");
+var productRoutes = require("./controllers/hotelController");
 var myitemRoutes = require("./controllers/myItemController");
 
 var app = express();
@@ -16,8 +14,6 @@ app.use(bodyParser.json());
 app.use("/register", registerRoutes);
 app.use("/category", categoryRoutes);
 app.use("/product", productRoutes);
-app.use("/message", messageRoutes);
-app.use("/wishlist", wishlistRoutes);
 app.use("/myitem", myitemRoutes);
 app.use(express.static("public"));
 

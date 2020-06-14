@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-//modal for new product
+//Modal for new new hotel
+
 var NewProduct = mongoose.model('product',{
     name : {type:String},
     category : {type:String},

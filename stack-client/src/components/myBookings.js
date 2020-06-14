@@ -8,7 +8,7 @@ const initialState = {
   myCart: [],
 };
 
-class myCart extends React.Component {
+class myBookings extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
@@ -29,11 +29,6 @@ class myCart extends React.Component {
       });
   }
 
-  onBuy(id) {
-    localStorage.setItem("cartId", id);
-    window.location.href = "/payment";
-  }
-
   onDelete(id) {
     if (window.confirm("Are you sure to delete this record?")) {
       api
@@ -43,8 +38,8 @@ class myCart extends React.Component {
           ButterToast.raise({
             content: (
               <Cinnamon.Crisp
-                title="Online Store"
-                content="Remove Successful!"
+                title="Online Hotel Booking System"
+                content="Hotel Removed from my bookings Successfully!"
                 scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                 icon={<AssignmentTurnedIn />}
               />
@@ -55,7 +50,7 @@ class myCart extends React.Component {
     }
   }
 
-  /*****Cart form **********/
+  //Hotel booking form 
 
   render() {
     const { myCart } = this.state;
@@ -65,50 +60,37 @@ class myCart extends React.Component {
         <br></br>
         <div className="row justify-content-center">
           <div className="col-md-12">
-            <div className="card">
-              <div className="card-header">Shooping Cart</div>
+            <div className="card border-primary mb-3">
+              <div className="card-header" style={{ color: "Blue" }}>My Booking Cart</div>
               <div className="card-body">
                 <table className="table">
                   <tbody>
                     {myCart.map((cart) => (
                       <tr>
+
                         <td className="tableTh" width="25%">
-                          <img
-                            width="200px"
-                            alt=""
-                            src={"/" + cart.proImage}
-                            className="img-thumbnail"
-                          />
+                          <img width="200px" alt="" src={"/" + cart.proImage} className="img-thumbnail"/>
                         </td>
+
                         <td className="tableTh" width="60%">
                           <h3>{cart.proName}</h3>
                           <br />
                           <h5>
-                            Price: Rs. {cart.proPrice} / Discount: Rs.{" "}
+                            One Room Price: Rs. {cart.proPrice} / Discount: Rs.{" "}
                             {cart.proDiscount}
                           </h5>
                           <br />
                           <h5>
-                            Total: Rs. {cart.total} / Quantity:{" "}
+                            Total: Rs. {cart.total} / Ordered Quantity:{" "}
                             {cart.proQuantity}
                           </h5>
                         </td>
+
                         <td className="tableTh" width="15%">
-                          <button
-                            type="button"
-                            onClick={() => this.onBuy(cart._id)}
-                            className="btn btn-success"
-                          >
-                            BUY
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => this.onDelete(cart._id)}
-                            className="btn btn-danger"
-                          >
-                            Remove
-                          </button>
+                          <button type="button" className="btn btn-success"> Pay Now </button>
+                          <button type="button" onClick={() => this.onDelete(cart._id)} className="btn btn-danger">Remove</button>
                         </td>
+
                       </tr>
                     ))}
                   </tbody>
@@ -122,4 +104,4 @@ class myCart extends React.Component {
   }
 }
 
-export default myCart;
+export default myBookings;

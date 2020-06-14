@@ -5,8 +5,7 @@ var ObjectID= require('mongoose').Types.ObjectId
 
 var { myItem } = require('../models/myItem')
 
-/* APIs for manage products of the shopping cart */
-
+//APIs for manage hotel bookings 
 
 router.get('/',(req,res)=>{
     myItem.find((err,docs)=>{
@@ -17,7 +16,9 @@ router.get('/',(req,res)=>{
         }
     })
 })
-/* Create product Details */
+
+//Create a new hotel record
+
 router.post('/',(req,res)=>{
     var newRecord= new myItem({
         type: req.body.type,
@@ -41,7 +42,8 @@ router.post('/',(req,res)=>{
     })
 })
 
-/* Update product from Shopping cart */
+//Update hotel from booking cart 
+
 router.put('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){
         return res.status(400).send('No record with given id : '+req.params.id)
@@ -61,7 +63,8 @@ router.put('/:id',(req,res)=>{
     })
 })
 
-/* Delete product from Shopping cart */
+//Delete hotel from booking cart 
+
 router.delete('/:id',(req,res)=>{
     if(!ObjectID.isValid(req.params.id)){
         return res.status(400).send('No record with given id : '+req.params.id)

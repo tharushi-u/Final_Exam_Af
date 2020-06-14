@@ -4,7 +4,8 @@ import api from "../actions/api.js";
 import ButterToast, { Cinnamon } from "butter-toast";
 import { AssignmentTurnedIn, ExtensionSharp } from "@material-ui/icons";
 
-//define variables
+//Define variables
+
 const initialState = {
   name: "",
   nameError: "",
@@ -31,7 +32,8 @@ class Category extends React.Component {
     });
   };
 
-  //for delete categories
+  //Delete Hotel categories
+
   onDelete(id) {
     if (window.confirm("Are you sure to delete this record?")) {
       api
@@ -41,8 +43,8 @@ class Category extends React.Component {
           ButterToast.raise({
             content: (
               <Cinnamon.Crisp
-                title="Online Store"
-                content="Delete Successful!"
+                title="Online Hotel Booking System"
+                content="Hotel Category Deleted Successfully!"
                 scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                 icon={<AssignmentTurnedIn />}
               />
@@ -53,7 +55,8 @@ class Category extends React.Component {
     }
   }
 
-  //for handle form submit button when add a category
+  //For handle form submit button when add a Hotel category
+
   handleSubmit = (e) => {
     e.preventDefault();
     const isValid = this.validate();
@@ -68,7 +71,7 @@ class Category extends React.Component {
             ButterToast.raise({
               content: (
                 <Cinnamon.Crisp
-                  title="Online Store"
+                  title="Online Hotel Booking System"
                   content="This Catgory Name Already Exists!"
                   scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                   icon={<ExtensionSharp />}
@@ -83,8 +86,8 @@ class Category extends React.Component {
                 ButterToast.raise({
                   content: (
                     <Cinnamon.Crisp
-                      title="Online Store"
-                      content="Category Add successfully"
+                      title="Online Hotel Booking System"
+                      content="Hotel Category Added successfully!"
                       scheme={Cinnamon.Crisp.SCHEME_PURPLE}
                       icon={<AssignmentTurnedIn />}
                     />
@@ -98,7 +101,8 @@ class Category extends React.Component {
     }
   };
 
-  //for validate input fields in form
+  //Validate input fields in hotel category form
+
   validate = () => {
     let nameError = "";
 
@@ -123,23 +127,15 @@ class Category extends React.Component {
           <br></br>
           <div className="row justify-content-center">
             <div className="col-md-10">
-              <div className="card">
-                <div className="card-header">Category</div>
+              <div className="card border-primary mb-3">
+                <div className="card-header"style={{ color: "Blue" }}> Add Hotel Category</div>
                 <div className="card-body">
                   {/*form for add a category*/}
                   <form autoComplete="off" onSubmit={this.handleSubmit}>
                     <div className="form-group row">
-                      <label className="col-md-4 col-form-label text-md-right">
-                        Category Name
-                      </label>
+                      <label className="col-md-4 col-form-label text-md-right"> Hotel Category Name </label>
                       <div className="col-md-6">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="name"
-                          value={this.state.name}
-                          onChange={this.handleChange}
-                        />
+                        <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.handleChange}/>
                         <div style={{ color: "red" }}>
                           {this.state.nameError}
                         </div>
@@ -147,19 +143,17 @@ class Category extends React.Component {
                     </div>
 
                     <div className="col-md-4 offset-md-4">
-                      <button type="submit" className="btn btn-primary">
-                        Add
-                      </button>
+                      <button type="submit" className="btn btn-primary"> Add Category </button>
                     </div>
                   </form>
                   <br></br>
 
-                  {/*table for display categories.*/}
+                  {/*Display Hotel categories.*/}
                   <table className="table">
                     <thead>
                       <tr>
-                        <th className="tableTh">Category Name</th>
-                        <th className="tableTh">Remove</th>
+                        <th className="tableTh">Hotel Category Name</th>
+                        <th className="tableTh">Remove Category</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -167,13 +161,7 @@ class Category extends React.Component {
                         <tr>
                           <td className="tableTh">{category.name}</td>
                           <td className="tableTh">
-                            <button
-                              type="button"
-                              onClick={() => this.onDelete(category._id)}
-                              className="btn btn-danger"
-                            >
-                              Delete
-                            </button>
+                            <button type="button" onClick={() => this.onDelete(category._id)} className="btn btn-danger"> Delete</button>
                           </td>
                         </tr>
                       ))}
